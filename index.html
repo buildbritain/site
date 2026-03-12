@@ -64,6 +64,26 @@ body{font-family:var(--sans);font-size:18px;line-height:1.72;color:var(--ink);ba
 .nav a{display:block;padding:.85rem .9rem;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(248,246,241,.45);text-decoration:none;white-space:nowrap;transition:color .2s}
 .nav a:hover{color:var(--paper)}
 .nav .brand{font-family:var(--serif);font-size:.95rem;text-transform:none;letter-spacing:0;color:var(--paper);padding-right:1.8rem;margin-right:.5rem;border-right:1px solid rgba(248,246,241,.12)}
+.nav-toggle{display:none}
+.nav-hamburger{display:none;cursor:pointer;padding:.85rem 1rem;margin-left:auto;flex-shrink:0}
+.nav-hamburger span,.nav-hamburger span::before,.nav-hamburger span::after{display:block;width:18px;height:2px;background:var(--paper);border-radius:1px;position:relative;transition:all .3s}
+.nav-hamburger span::before,.nav-hamburger span::after{content:'';position:absolute;left:0}
+.nav-hamburger span::before{top:-6px}
+.nav-hamburger span::after{top:6px}
+.nav-toggle:checked ~ .nav-inner .nav-hamburger span{background:transparent}
+.nav-toggle:checked ~ .nav-inner .nav-hamburger span::before{top:0;transform:rotate(45deg)}
+.nav-toggle:checked ~ .nav-inner .nav-hamburger span::after{top:0;transform:rotate(-45deg)}
+.nav-links{display:flex;align-items:center}
+@media(max-width:1200px){
+  .nav{overflow:visible}
+  .nav-inner{flex-wrap:wrap}
+  .nav-hamburger{display:block}
+  .nav .brand{border-right:none;margin-right:0;padding-right:0}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;background:rgba(26,26,26,.99);border-top:1px solid rgba(248,246,241,.08)}
+  .nav-links a{padding:1rem 1.5rem;font-size:.78rem;border-bottom:1px solid rgba(248,246,241,.06)}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-toggle:checked ~ .nav-inner .nav-links{display:flex}
+}
 
 /* CONTENT */
 .content{max-width:760px;margin:0 auto;padding:0 2rem}
@@ -256,21 +276,25 @@ body{font-family:var(--sans);font-size:18px;line-height:1.72;color:var(--ink);ba
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
 <div class="nav-inner">
   <a href="#" class="brand">Build Britain</a>
-  <a href="#summary">The Plan</a>
-  <a href="#energy">Energy</a>
-  <a href="#housing">Housing</a>
-  <a href="#sme">Economy</a>
-  <a href="#service">Service</a>
-  <a href="#health">Health</a>
-  <a href="#education">Education</a>
-  <a href="#digital">Digital</a>
-  <a href="#land">Land</a>
-  <a href="#institutions">Reform</a>
-  <a href="#identity">Identity</a>
-  <a href="#media">Media</a>
-  <a href="#funding">Funding</a>
+  <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle navigation"><span></span></label>
+  <div class="nav-links">
+    <a href="#summary">The Plan</a>
+    <a href="#energy">Energy</a>
+    <a href="#housing">Housing</a>
+    <a href="#sme">Economy</a>
+    <a href="#service">Service</a>
+    <a href="#health">Health</a>
+    <a href="#education">Education</a>
+    <a href="#digital">Digital</a>
+    <a href="#land">Land</a>
+    <a href="#institutions">Reform</a>
+    <a href="#identity">Identity</a>
+    <a href="#media">Media</a>
+    <a href="#funding">Funding</a>
+  </div>
 </div>
 </nav>
 
@@ -989,64 +1013,65 @@ body{font-family:var(--sans);font-size:18px;line-height:1.72;color:var(--ink);ba
 </div><!-- /content -->
 
 <!-- ============ FUNDING ============ -->
-<section id="funding" style="padding:4rem 2rem;background:var(--paper)">
+<section id="funding" style="padding:5rem 2rem;background:var(--ink);color:var(--paper)">
 <div style="max-width:700px;margin:0 auto">
-  <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2rem);margin-bottom:.4rem;text-align:center">How do you pay for it?</h2>
-  <p style="color:var(--warm);text-align:center;margin-bottom:2.5rem">The honest answer: redirection, not magic. Money currently spent badly, spent better.</p>
+  <div style="font-family:var(--mono);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.75rem;text-align:center">Funding the Programme</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:.6rem;text-align:center">How Do You Pay for All of This?</h2>
+  <p style="color:rgba(248,246,241,.6);text-align:center;margin-bottom:3rem;font-size:1.05rem;max-width:580px;margin-left:auto;margin-right:auto">Eleven pillars. Real money. The honest answer: redirection, not magic. Money currently spent badly, spent better.</p>
 
   <div class="chart-container" style="margin-top:0">
-    <div class="chart-title">Major funding sources — estimated annual revenue / savings</div>
+    <div class="chart-title" style="color:rgba(248,246,241,.45)">Major funding sources — estimated annual revenue / savings</div>
     <div class="bar-chart">
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Defence redirection</div>
-        <div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--blue)"></div></div>
-        <div class="bar-val">£8–12bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Defence redirection</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:65%;background:var(--blue)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£8–12bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Energy retrofit savings</div>
-        <div class="bar-track"><div class="bar-fill" style="width:59%;background:var(--green)"></div></div>
-        <div class="bar-val">£10.6bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Energy retrofit savings</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:59%;background:var(--green)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£10.6bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Land Value Tax (net)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div>
-        <div class="bar-val">£8–10bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Land Value Tax (net)</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£8–10bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Prevention vs NHS acute</div>
-        <div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--green)"></div></div>
-        <div class="bar-val">£7–9bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Prevention vs NHS acute</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:45%;background:var(--green)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£7–9bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Crown/Duchy recapture</div>
-        <div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--blue)"></div></div>
-        <div class="bar-val">£0.5–1bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Crown/Duchy recapture</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:8%;background:var(--blue)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£0.5–1bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Energy windfall taxes</div>
-        <div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--blue)"></div></div>
-        <div class="bar-val">£2–4bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Energy windfall taxes</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:18%;background:var(--blue)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£2–4bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Platform/digital levies</div>
-        <div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--blue)"></div></div>
-        <div class="bar-val">£1–3bn</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Platform/digital levies</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:12%;background:var(--blue)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£1–3bn</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label" style="width:160px">Productivity returns</div>
-        <div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--green)"></div></div>
-        <div class="bar-val">£10bn+</div>
+        <div class="bar-label" style="width:160px;color:rgba(248,246,241,.6)">Productivity returns</div>
+        <div class="bar-track" style="background:rgba(248,246,241,.1)"><div class="bar-fill" style="width:55%;background:var(--green)"></div></div>
+        <div class="bar-val" style="color:var(--paper)">£10bn+</div>
       </div>
     </div>
-    <div class="chart-source">Estimates. Blue = redirection or new revenue. Green = savings and returns over time. Productivity returns modelled on 1% <span class="tip" data-tip="Gross Domestic Product — the total value of goods and services produced in a country" tabindex="0">GDP</span> growth uplift from structural reform.</div>
+    <div class="chart-source" style="color:rgba(248,246,241,.35)">Estimates. Blue = redirection or new revenue. Green = savings and returns over time. Productivity returns modelled on 1% <span class="tip" data-tip="Gross Domestic Product — the total value of goods and services produced in a country" tabindex="0">GDP</span> growth uplift from structural reform.</div>
   </div>
 
-  <div class="callout" style="margin-top:2rem">
-    <div class="callout-title">Honest phasing</div>
-    <p><strong>Available in year 1:</strong> Defence spending redirection (£8–12bn), Crown/Duchy recapture (£0.5–1bn), energy windfall taxes (£2–4bn), platform levies (£1–3bn). Total: roughly £12–20bn in immediate revenue and redirection.</p>
-    <p style="margin-top:.5rem"><strong>Building over years 2–5:</strong> Land Value Tax revenue ramps as the system is implemented. Retrofit savings accumulate as homes are upgraded. NCS becomes self-sustaining as graduates enter the workforce.</p>
-    <p style="margin-top:.5rem"><strong>Realised over years 5–15:</strong> NHS prevention savings (slow to materialise but large). Productivity returns from a more skilled, healthier, better-housed workforce. These are real but speculative — they depend on execution.</p>
-    <p style="margin-top:.5rem">The NCS costs £15–16bn/year. The retrofit programme costs £6–8bn/year up front. In the early years, this requires borrowing against future returns — just as any infrastructure investment does. The difference is that this borrowing builds productive capacity rather than servicing consumption. By year 5–7, the programme should be approaching fiscal neutrality. By year 10–15, it should be net positive.</p>
+  <div style="border-left:3px solid var(--accent);padding:1.2rem 1.5rem;margin:2.5rem 0;border-radius:0 6px 6px 0;font-size:.92rem;background:rgba(248,246,241,.06)">
+    <div style="font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;color:var(--accent)">Honest phasing</div>
+    <p style="color:rgba(248,246,241,.7);margin-bottom:.6rem"><strong style="color:var(--paper)">Available in year 1:</strong> Defence spending redirection (£8–12bn), Crown/Duchy recapture (£0.5–1bn), energy windfall taxes (£2–4bn), platform levies (£1–3bn). Total: roughly £12–20bn in immediate revenue and redirection.</p>
+    <p style="color:rgba(248,246,241,.7);margin-bottom:.6rem"><strong style="color:var(--paper)">Building over years 2–5:</strong> Land Value Tax revenue ramps as the system is implemented. Retrofit savings accumulate as homes are upgraded. NCS becomes self-sustaining as graduates enter the workforce.</p>
+    <p style="color:rgba(248,246,241,.7);margin-bottom:.6rem"><strong style="color:var(--paper)">Realised over years 5–15:</strong> NHS prevention savings (slow to materialise but large). Productivity returns from a more skilled, healthier, better-housed workforce. These are real but speculative — they depend on execution.</p>
+    <p style="color:rgba(248,246,241,.7);margin-bottom:0">The NCS costs £15–16bn/year. The retrofit programme costs £6–8bn/year up front. In the early years, this requires borrowing against future returns — just as any infrastructure investment does. The difference is that this borrowing builds productive capacity rather than servicing consumption. By year 5–7, the programme should be approaching fiscal neutrality. By year 10–15, it should be net positive.</p>
   </div>
 </div>
 </section>
